@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "224136282092",
+    "project_id": "vishiki-salon",
+    "storage_bucket": "vishiki-salon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224136282092:android:b8ec63a82117775cdd0ac9",
+        "android_client_info": {
+          "package_name": "com.vishiki.salon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224136282092-dujjhaepo8rif3dtnqq0j839q4r9voco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhlYDO-jjJKDCQldD8G8odpGeaD_ahmcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224136282092-dujjhaepo8rif3dtnqq0j839q4r9voco.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

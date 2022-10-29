@@ -1,0 +1,186 @@
+<resources>
+    <string name="app_name">Vishiki Salon</string>
+    <string name="name">Name</string>
+    <string name="phonenumber">Phone Number</string>
+    <string name="dob">DOB</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="signin">Sign In</string>
+    <string name="signup">Sing Up</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="history">History</string>
+    <string name="faqs">FAQs</string>
+    <string name="logout">Logout</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hair_trim">Hair Trim</string>
+    <string name="hair_color">Hair Color</string>
+    <string name="skin_care">Skin Care</string>
+    <string name="waxing">Waxing</string>
+    <string name="hair_texture">Hair Texture</string>
+    <string name="beard_grooming">Beard Grooming</string>
+    <string name="nail_care">Nail Care</string>
+    <string name="confirm">Confirm</string>
+    <string name="save">Save</string>
+
+
+    <string-array name="hairTrim">
+        <item>Regular Cut</item>
+        <item>Bowl Cut</item>
+        <item>Military Cut</item>
+        <item>Low Fade</item>
+    </string-array>
+
+    <integer-array name="hairTrimPrice">
+        <item>200</item>
+        <item>250</item>
+        <item>500</item>
+        <item>350</item>
+    </integer-array>
+
+    <string-array name="hairColor">
+        <item>Hi-Lighting Loreal</item>
+        <item>Advanced Streaks</item>
+        <item>Caramel</item>
+        <item>Blowout Burgundy</item>
+        <item>Ruby Fusion</item>
+    </string-array>
+
+    <integer-array name="hairColorPrice">
+        <item>100</item>
+        <item>500</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+    </integer-array>
+
+    <string-array name="mSkinCare">
+        <item>Facial</item>
+        <item>Scrub</item>
+        <item>Detain</item>
+        <item>Skin Polish</item>
+        <item>Charcoal Mask</item>
+    </string-array>
+
+    <integer-array name="mSkinCarePrice">
+        <item>500</item>
+        <item>350</item>
+        <item>700</item>
+        <item>800</item>
+        <item>450</item>
+    </integer-array>
+
+    <string-array name="waxing">
+        <item>Facial</item>
+        <item>Scrub</item>
+        <item>Detain</item>
+        <item>Skin Polish</item>
+        <item>Charcoal Mask</item>
+    </string-array>
+
+    <integer-array name="waxingPrice">
+        <item>500</item>
+        <item>350</item>
+        <item>700</item>
+        <item>800</item>
+        <item>450</item>
+    </integer-array>
+
+
+    <string-array name="hairTexture">
+        <item>Hair Smoothening</item>
+        <item>WaistHair Smoothening</item>
+        <item>Shoulder Length</item>
+        <item>Straightening</item>
+        <item>Loreal Straightening</item>
+    </string-array>
+
+    <integer-array name="hairTexturePrice">
+        <item>5500</item>
+        <item>4500</item>
+        <item>2000</item>
+        <item>3500</item>
+        <item>1500</item>
+    </integer-array>
+
+    <string-array name="mBeardGrooming">
+        <item>Regular</item>
+        <item>Full Beard</item>
+        <item>Circle Beard</item>
+        <item>French</item>
+    </string-array>
+
+    <integer-array name="mBeardGroomingPrice">
+        <item>100</item>
+        <item>200</item>
+        <item>200</item>
+        <item>350</item>
+    </integer-array>
+
+    <string-array name="fHairColor">
+        <item>Highlighting Loreal</item>
+        <item>Advanced Streaks</item>
+        <item>Caramel</item>
+        <item>Blowout Burgundy</item>
+        <item>Ruby Fusion</item>
+    </string-array>
+
+    <integer-array name="fHairColorPrice">
+        <item>100</item>
+        <item>500</item>
+        <item>800</item>
+        <item>900</item>
+        <item>1000</item>
+    </integer-array>
+
+    <string-array name="fSkinCare">
+        <item>Facial</item>
+        <item>CleanUp Berry</item>
+        <item>Peel Treatment</item>
+        <item>Beauty Facial</item>
+        <item>Quick Glow Mashque</item>
+    </string-array>
+
+    <integer-array name="fSkinCarePrice">
+        <item>500</item>
+        <item>1000</item>
+        <item>2600</item>
+        <item>1600</item>
+        <item>750</item>
+    </integer-array>
+
+    <string-array name="fNailCare">
+        <item>Gel Polish</item>
+        <item>French Nail Polish</item>
+        <item>Nail Acrylic Natural</item>
+        <item>Stamping Nail Art</item>
+        <item>Removal Gel Polish</item>
+        <item>Temporary Nail Extension</item>
+    </string-array>
+
+    <integer-array name="fNailCarePrice">
+        <item>850</item>
+        <item>150</item>
+        <item>1000</item>
+        <item>750</item>
+        <item>250</item>
+        <item>1500</item>
+    </integer-array>
+
+
+</resources>

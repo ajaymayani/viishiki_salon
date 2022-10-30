@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4F5DD"
+    android:background="@color/bgcolor"
     android:orientation="vertical"
     tools:context=".RegistrationActivity">
 
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="22dp"
             android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppinsbold"
             android:text="Welcome,"
             android:textColor="#000"
             android:textSize="25sp" />
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="22dp"
             android:layout_marginTop="3dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppinsbold"
             android:text="Create Your Account"
             android:textColor="#000"
             android:textSize="25sp" />
@@ -80,8 +80,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:drawableStart="@drawable/name_icon"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Your Full Name"
                 android:paddingStart="20dp"
                 android:textColor="@color/black"
@@ -104,10 +105,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Your Phone Number"
                 android:inputType="number"
                 android:maxLength="10"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:paddingStart="20dp"
                 android:textColor="@color/black"
                 android:textColorHint="#F2515151"
@@ -130,9 +132,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Date of Birth"
                 android:inputType="date"
+                android:drawableStart="@drawable/ic_baseline_calendar_month_24"
                 android:maxLength="10"
                 android:paddingStart="20dp"
                 android:textColor="@color/black"
@@ -156,9 +159,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Your Username"
                 android:paddingStart="20dp"
+                android:drawableStart="@drawable/ic_baseline_person_24"
                 android:textColor="@color/black"
                 android:textColorHint="#F2515151"
                 android:textCursorDrawable="@drawable/color_cursor"
@@ -180,7 +184,7 @@
 <!--                android:layout_height="match_parent"-->
 <!--                android:layout_gravity="center"-->
 <!--                android:background="@drawable/border_black"-->
-<!--                android:fontFamily="sans-serif"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
 <!--                android:hint="Enter Password"-->
 <!--                android:inputType="textPassword"-->
 <!--                android:maxLength="12"-->
@@ -207,10 +211,11 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Password"
                 android:inputType="textPassword"
                 android:maxLength="12"
+                android:drawableStart="@drawable/ic_baseline_key_24"
                 android:paddingEnd="10dp"
                 android:paddingStart="20dp"
                 android:textColor="@color/black"
@@ -235,7 +240,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/white_rounded_bg"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppins_regular"
             android:text="Register"
             android:textAllCaps="false"
             android:textColor="@color/black"
@@ -253,7 +258,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Already, Have an account?"
                 android:textColor="#000"
                 android:textSize="22sp" />
@@ -262,7 +267,7 @@
                 android:id="@+id/tvSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppinsbold"
                 android:padding="5dp"
                 android:text="@string/signin"
                 android:textColor="@color/blue"

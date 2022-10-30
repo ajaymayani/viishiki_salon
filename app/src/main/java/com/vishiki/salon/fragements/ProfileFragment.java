@@ -23,8 +23,8 @@ import com.vishiki.salon.models.Services;
 public class ProfileFragment extends Fragment {
 
     ImageView ivProfilePicture;
-    TextView tvUsername, tvName, tvDOB, tvUsername1, tvPhoneNumber;
-    String imageUrl, name, dob, username, phoneNumber;
+    TextView tvUsername, tvName, tvDOB, tvUsername1, tvPhoneNumber,tvPassword;
+    String imageUrl, name, dob, username, phoneNumber,password;
     Button btnEdit;
 
     public ProfileFragment() {
@@ -44,12 +44,14 @@ public class ProfileFragment extends Fragment {
         tvUsername1 = view.findViewById(R.id.tvUsername1);
         tvPhoneNumber = view.findViewById(R.id.tvPhoneNumber);
         btnEdit = view.findViewById(R.id.btnEdit);
+        tvPassword = view.findViewById(R.id.tvPassword);
 
         imageUrl = sp.getString("imageUrl", "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png");
         name = sp.getString("name", "");
         dob = sp.getString("dob", "");
         username = sp.getString("username", "");
         phoneNumber = sp.getString("phoneNumber", "");
+        password = sp.getString("password", "");
 
         Picasso.get().load(imageUrl).placeholder(R.drawable.logo).into(ivProfilePicture);
 
@@ -58,6 +60,7 @@ public class ProfileFragment extends Fragment {
         tvDOB.setText(dob);
         tvUsername1.setText(username);
         tvPhoneNumber.setText(phoneNumber);
+        tvPassword.setText(password);
 
 
         btnEdit.setOnClickListener(new View.OnClickListener() {

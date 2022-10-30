@@ -5,6 +5,7 @@ import static com.vishiki.salon.SplashActivity.editor;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
                     etPassword.setInputType(129);
                 }
 
+                Typeface typeface = ResourcesCompat.getFont(LoginActivity.this, R.font.poppins_regular);
+                etPassword.setTypeface(typeface);
             }
         });
 

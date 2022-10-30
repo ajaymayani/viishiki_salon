@@ -137,6 +137,7 @@ public class ServiceDetailFragment extends Fragment {
                         myCalendar.set(Calendar.DAY_OF_MONTH, day);
 //                        Toast.makeText(getActivity(), ""+day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
                         String selectedDate = day + "/" + (month + 1) + "/" + year;
+
                         PaymentFragment paymentFragment = new PaymentFragment();
                         Bundle args = new Bundle();
                         args.putString("date", selectedDate);

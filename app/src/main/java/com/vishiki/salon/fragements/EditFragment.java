@@ -9,10 +9,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -53,13 +53,14 @@ import java.util.Map;
 public class EditFragment extends Fragment {
 
     ImageView ivProfilePicture, ivSelectImage;
-    EditText etName, etDOB, etPhoneNumber;
+    EditText etName, etDOB, etPhoneNumber, etUsername, etPassword;
     TextView tvUsername;
     Uri imageUri;
     Button btnSave;
+    ImageView ivEye;
     FirebaseFirestore db;
     private boolean isImageChanged = false;
-    String username, name, imageUrl, dob, phoneNumber;
+    String username, name, imageUrl, dob, phoneNumber, password;
 
     public EditFragment() {
         // Required empty public constructor
@@ -78,21 +79,42 @@ public class EditFragment extends Fragment {
         etPhoneNumber = view.findViewById(R.id.etPhoneNumber);
         tvUsername = view.findViewById(R.id.tvUsername);
         btnSave = view.findViewById(R.id.btnSave);
+        etUsername = view.findViewById(R.id.etUsername);
+        etPassword = view.findViewById(R.id.etPassword);
+        ivEye = view.findViewById(R.id.ivEye);
 
         username = sp.getString("username", "default");
         imageUrl = sp.getString("imageUrl", "");
         dob = sp.getString("dob", "default");
         name = sp.getString("name", "default");
+        password = sp.getString("password", "");
         phoneNumber = sp.getString("phoneNumber", "default");
 
         tvUsername.setText(username);
+        etUsername.setText(username);
         etName.setText(name);
         etDOB.setText(dob);
         etPhoneNumber.setText(phoneNumber);
+        etPassword.setText(password);
         db = FirebaseFirestore.getInstance();
 
+        ivEye.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (etPassword.getInputType() == 129) {
+                    ivEye.setImageDrawable(getActivity().getDrawable(R.drawable.ic_baseline_remove_red_eye_24));
+                    etPassword.setInputType(131073);
+                } else if (etPassword.getInputType() == 131073) {
+                    ivEye.setImageDrawable(getActivity().getDrawable(R.drawable.hidden));
+                    etPassword.setInputType(129);
+                }
+                Typeface typeface = ResourcesCompat.getFont(getActivity(), R.font.poppins_regular);
+                etPassword.setTypeface(typeface);
+            }
+        });
+
         Picasso.get().load(imageUrl).into(ivProfilePicture);
-               ivSelectImage.setOnClickListener(new View.OnClickListener() {
+        ivSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Dexter.withContext(getActivity())
@@ -126,6 +148,8 @@ public class EditFragment extends Fragment {
                 String newName = etName.getText().toString();
                 String newDOB = etDOB.getText().toString();
                 String newPhoneNumber = etPhoneNumber.getText().toString();
+                String newUsername = etUsername.getText().toString();
+                String newPassword = etPassword.getText().toString();
 
                 if (newName.isEmpty()) {
                     etName.setError("Name can't be empty");
@@ -139,14 +163,29 @@ public class EditFragment extends Fragment {
                 } else if (newDOB.isEmpty()) {
                     etDOB.setError("DOB can't be empty");
                     return;
+                } else if (newUsername.isEmpty()) {
+                    etUsername.setError("Username can't be empty");
+                    return;
+                } else if (newPassword.isEmpty()) {
+//                    etPassword.setError("Password can't be empty");
+                    etPassword.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    Toast.makeText(getActivity(), "Password can't be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if (newPassword.length() < 6) {
+//                    etPassword.setError("Password must be 6-12 character");
+                    etPassword.setBackground(getActivity().getDrawable(R.drawable.border_red));
+                    Toast.makeText(getActivity(), "Password must be 6-12 character", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    etPassword.setBackground(getActivity().getDrawable(R.drawable.purple_background));
                 }
 
 
-                    if (isImageChanged) {
-                        insertDataWithImage(newName, newDOB, newPhoneNumber);
-                    } else {
-                        insertData(newName, newDOB, newPhoneNumber);
-                    }
+                if (isImageChanged) {
+                    insertDataWithImage(newName, newDOB, newPhoneNumber,newUsername,newPassword);
+                } else {
+                    insertData(newName, newDOB, newPhoneNumber,newUsername,newPassword);
+                }
 
             }
         });
@@ -170,7 +209,7 @@ public class EditFragment extends Fragment {
         }
     }
 
-    public void insertDataWithImage(String newName, String newDOB, String newPhoneNumber) {
+    public void insertDataWithImage(String newName, String newDOB, String newPhoneNumber, String newUsername, String newPassword) {
         if (imageUri != null) {
             ProgressDialog progressDialog
                     = new ProgressDialog(getActivity());
@@ -197,6 +236,8 @@ public class EditFragment extends Fragment {
                                             updateUser.put("dob", newDOB);
                                             updateUser.put("phoneNumber", newPhoneNumber);
                                             updateUser.put("imageUrl", uri.toString());
+                                            updateUser.put("username", newUsername);
+                                            updateUser.put("password", newPassword);
 
                                             db.collection("users")
                                                     .whereEqualTo("username", username)
@@ -216,6 +257,8 @@ public class EditFragment extends Fragment {
                                                                                 editor.putString("name", newName);
                                                                                 editor.putString("phoneNumber", newPhoneNumber);
                                                                                 editor.putString("dob", newDOB);
+                                                                                editor.putString("username", newUsername);
+                                                                                editor.putString("password", newPassword);
                                                                                 editor.putString("imageUrl", uri.toString());
                                                                                 editor.apply();
                                                                                 progressDialog.dismiss();
@@ -282,11 +325,13 @@ public class EditFragment extends Fragment {
         }
     }
 
-    public void insertData(String newName, String newDOB, String newPhoneNumber) {
+    public void insertData(String newName, String newDOB, String newPhoneNumber, String newUsername, String newPassword) {
         HashMap<String, Object> newUser = new HashMap<>();
         newUser.put("name", newName);
         newUser.put("dob", newDOB);
         newUser.put("phoneNumber", newPhoneNumber);
+        newUser.put("username", newUsername);
+        newUser.put("password", newPassword);
 
         ProgressDialog dialog = new ProgressDialog(getActivity());
         dialog.setMessage("Profile updating....");
@@ -310,6 +355,8 @@ public class EditFragment extends Fragment {
                                             editor.putString("name", newName);
                                             editor.putString("phoneNumber", newPhoneNumber);
                                             editor.putString("dob", newDOB);
+                                            editor.putString("username", newUsername);
+                                            editor.putString("password", newPassword);
                                             editor.apply();
                                             dialog.dismiss();
                                             Toast.makeText(getActivity(), "Profile update successfully...", Toast.LENGTH_SHORT).show();

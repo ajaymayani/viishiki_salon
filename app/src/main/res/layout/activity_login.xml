@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4F5DD"
+    android:background="@color/bgcolor"
     tools:context=".LoginActivity">
 
 
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="25dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppinsbold"
             android:text="Welcome,"
             android:textColor="#000"
             android:textSize="25sp" />
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginTop="3dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppinsbold"
             android:text="Sign In Your Account"
             android:textColor="#000"
             android:textSize="25sp" />
@@ -53,9 +53,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_baseline_person_24"
                 android:singleLine="true"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Username"
                 android:paddingStart="20dp"
                 android:textCursorDrawable="@drawable/color_cursor"
@@ -74,11 +75,12 @@
 
             <EditText
                 android:id="@+id/etPassword"
+                android:drawableStart="@drawable/ic_baseline_key_24"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:background="@drawable/border_black"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:hint="Enter Password"
                 android:inputType="textPassword"
                 android:maxLength="12"
@@ -106,7 +108,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="@drawable/white_rounded_bg"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppins_regular"
             android:gravity="center"
             android:layout_marginTop="25dp"
             android:text="@string/signin"
@@ -127,7 +129,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Don't have an account?"
                 android:textColor="#000"
                 android:textSize="22sp" />
@@ -136,7 +138,7 @@
                 android:id="@+id/tvSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppinsbold"
                 android:padding="5dp"
                 android:text="Sign Up"
                 android:textColor="@color/blue"

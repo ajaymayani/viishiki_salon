@@ -4,20 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D4F5DD"
+    android:background="@color/bgcolor"
     android:orientation="vertical"
     tools:context=".fragements.EditFragment">
 
-    <TextView
-        android:id="@+id/tvHeaderTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="Edit Profile"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/primary_color"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Edit Profile"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000"
+        android:orientation="horizontal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,34 +71,30 @@
             android:layout_gravity="center"
             android:layout_marginStart="30dp"
             android:layout_toEndOf="@+id/cardView"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/poppins_regular"
             android:text="Hi, UserName"
             android:textColor="#000"
             android:textSize="20sp" />
 
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        app:cardUseCompatPadding="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="vertical">
 
             <EditText
+                android:drawableStart="@drawable/name_icon"
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/border_black"
+                android:background="@drawable/purple_background"
                 android:hint="Name"
                 android:inputType="textPersonName"
                 android:padding="10dp"
@@ -94,12 +103,13 @@
                 android:textSize="23sp" />
 
             <EditText
+                android:drawableStart="@drawable/ic_baseline_calendar_month_24"
                 android:id="@+id/etDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/border_black"
+                android:background="@drawable/purple_background"
                 android:hint="Date of Birth"
                 android:inputType="date"
                 android:maxLength="10"
@@ -112,9 +122,10 @@
                 android:id="@+id/etPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:layout_gravity="center"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/border_black"
+                android:background="@drawable/purple_background"
                 android:hint="Phone Number"
                 android:inputType="phone"
                 android:maxLength="10"
@@ -123,9 +134,58 @@
                 android:textColor="#000"
                 android:textSize="23sp" />
 
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/purple_background"
+                android:hint="Username"
+                android:inputType="text"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textSize="23sp" />
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:id="@+id/rlSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp">
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/purple_background"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:maxLength="12"
+                    android:drawableStart="@drawable/ic_baseline_key_24"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="#F2515151"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/ivEye"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/hidden" />
+            </RelativeLayout>
+
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btnSave"
@@ -133,8 +193,8 @@
         android:layout_height="55dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:background="@drawable/border_black"
-        android:fontFamily="sans-serif"
+        android:background="@drawable/purple_background_black_border"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="#000"

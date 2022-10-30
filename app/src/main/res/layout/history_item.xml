@@ -14,6 +14,7 @@
         android:padding="10dp">
 
         <TextView
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/tvAppointmentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,22 +22,24 @@
             android:layout_marginEnd="10dp"
             android:text="date"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tv"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/poppins_regular"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvAppointmentDate"
             android:text="Service"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/ll"
             android:layout_marginTop="5dp"
             android:layout_below="@id/tv"
             android:layout_toEndOf="@id/tv"
+            android:fontFamily="@font/poppins_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -48,16 +51,17 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.2"
                 android:textColor="#000"
-                android:textSize="18sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/tvServicesPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_gravity="center"
                 android:layout_weight="0.8"
                 android:textColor="#000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <TextView
@@ -66,8 +70,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ll"
             android:text="Total"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

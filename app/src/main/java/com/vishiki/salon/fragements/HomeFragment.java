@@ -108,8 +108,6 @@ public class HomeFragment extends Fragment {
                                 permissionToken.continuePermissionRequest();
                             }
                         }).check();
-
-
             }
         });
 

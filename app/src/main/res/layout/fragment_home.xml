@@ -9,8 +9,9 @@
     tools:context=".fragements.HomeFragment">
 
         <RelativeLayout
+            android:background="@color/primary_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="150dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card"
@@ -36,7 +37,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="45dp"
                 android:layout_marginEnd="90dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppinsbold"
                 android:text="Welcome,"
                 android:textColor="#000"
                 android:textSize="20sp" />
@@ -48,7 +49,7 @@
                 android:layout_below="@+id/t1"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:fontFamily="sans-serif"
+                android:fontFamily="@font/poppinsbold"
                 android:text="Username"
                 android:textColor="#000"
                 android:textSize="20sp" />
@@ -56,8 +57,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="2dp"
             android:background="#000"
             android:orientation="horizontal" />
 
@@ -69,27 +69,28 @@
 
             <LinearLayout
                 android:id="@+id/llServices"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/dashbord_btn"
+                android:gravity="center"
+                android:background="@drawable/border_black"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:padding="10dp"
                     android:src="@drawable/services" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
+                    android:fontFamily="@font/poppinsbold"
                     android:text="Services"
                     android:textColor="#000"
                     android:textSize="20sp" />
@@ -98,28 +99,29 @@
 
             <LinearLayout
                 android:id="@+id/llHistory"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/dashbord_btn"
+                android:gravity="center"
+                android:background="@drawable/border_black"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:padding="5dp"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/history" />
+                    android:src="@drawable/ic_baseline_history_24" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="History"
+                    android:fontFamily="@font/poppinsbold"
                     android:textColor="#000"
                     android:textSize="20sp" />
 
@@ -135,28 +137,29 @@
 
             <LinearLayout
                 android:id="@+id/llContactUs"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/dashbord_btn"
+                android:gravity="center"
+                android:background="@drawable/border_black"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/contact" />
+                    android:padding="10dp"
+                    android:src="@drawable/about" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
-                    android:text="Contact Us"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="About Us"
                     android:textColor="#000"
                     android:textSize="20sp" />
 
@@ -164,28 +167,29 @@
 
             <LinearLayout
                 android:id="@+id/llLogout"
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="40dp"
                 android:layout_weight="1"
-                android:background="@drawable/dashbord_btn"
+                android:gravity="center"
+                android:background="@drawable/border_black"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/logout" />
+                    android:padding="10dp"
+                    android:src="@drawable/logout_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="Logout"
+                    android:fontFamily="@font/poppinsbold"
                     android:textColor="#000"
                     android:textSize="20sp" />
 

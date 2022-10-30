@@ -28,12 +28,16 @@ import com.squareup.picasso.Picasso;
 import com.vishiki.salon.LoginActivity;
 import com.vishiki.salon.R;
 import com.vishiki.salon.RegistrationActivity;
+import com.vishiki.salon.models.Services;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     TextView tvUsername;
     LinearLayout llLogout, llServices, llHistory, llContactUs;
     ImageView ivProfilePicture;
+    public static ArrayList<Services> servicesArrayList = new ArrayList<>();
 
     public HomeFragment() {
         // Required empty public constructor
@@ -73,6 +77,7 @@ public class HomeFragment extends Fragment {
         llServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                servicesArrayList.clear();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new ServicesFragment()).addToBackStack(null).commit();
             }
         });

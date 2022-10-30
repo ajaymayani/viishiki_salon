@@ -1,7 +1,7 @@
 package com.vishiki.salon.fragements;
 
 import static com.vishiki.salon.SplashActivity.sp;
-import static com.vishiki.salon.fragements.ServicesFragment.servicesArrayList;
+import static com.vishiki.salon.fragements.HomeFragment.servicesArrayList;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -24,11 +24,10 @@ import com.vishiki.salon.models.Appointment;
 import com.vishiki.salon.models.Services;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PaymentFragment extends Fragment {
 
-    TextView tvUsername, tvServices, tvDate, tvTotal,tvServicesPrice;
+    TextView tvUsername, tvServices, tvDate, tvTotal, tvServicesPrice;
     Button btnAppointment;
     Appointment appointment;
     FirebaseFirestore db;
@@ -50,22 +49,21 @@ public class PaymentFragment extends Fragment {
         tvServicesPrice = view.findViewById(R.id.tvServicesPrice);
         tvTotal = view.findViewById(R.id.tvTotal);
         btnAppointment = view.findViewById(R.id.btnAppointment);
-        appointment =new Appointment();
+        appointment = new Appointment();
         String selectedDate = getArguments().getString("date");
-        String username = sp.getString("username","default");
+        String username = sp.getString("username", "default");
         StringBuilder builder = new StringBuilder();
         StringBuilder builderPrice = new StringBuilder();
-        int total=0;
-        tvUsername.setText("Username : "+username);
-        tvDate.setText("Date : "+selectedDate);
+        int total = 0;
+        tvUsername.setText("Username : " + username);
+        tvDate.setText("Date : " + selectedDate);
         appointment.setUsername(username);
         for (Services s : servicesArrayList) {
             servicesList.add(s);
 
-
-            builder.append("->"+s.getServiceName());
+            builder.append("->" + s.getServiceName());
             builder.append("\n");
-            builderPrice.append("₹"+s.getServicePrice());
+            builderPrice.append("₹" + s.getServicePrice());
             builderPrice.append("\n");
             total += s.getServicePrice();
         }
@@ -74,7 +72,7 @@ public class PaymentFragment extends Fragment {
 
         tvServices.setText(builder.toString());
         tvServicesPrice.setText(builderPrice.toString());
-        tvTotal.setText("Total : ₹"+total);
+        tvTotal.setText("Total : ₹" + total);
         appointment.setTotal(String.valueOf(total));
 
         btnAppointment.setOnClickListener(new View.OnClickListener() {
@@ -97,13 +95,18 @@ public class PaymentFragment extends Fragment {
                                 progressDialog.dismiss();
 
 //                                Toast.makeText(getActivity(), "Added", Toast.LENGTH_SHORT).show();
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
+                                servicesArrayList.clear();
+
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(getActivity(), "Failed:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                servicesArrayList.clear();
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+
                             }
                         });
             }

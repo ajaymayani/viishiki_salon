@@ -5,21 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.vishiki.salon.R;
-import com.vishiki.salon.models.Services;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ServicesFragment extends Fragment {
 
     LinearLayout mHairTrim, mHairColor, mSkinCare, mWaxing, mHairTexture, mBeardGrooming;
     LinearLayout fHairTrim, fHairColor, fSkinCare, fWaxing, fHairTexture, fNailCare;
-    public static ArrayList<Services> servicesArrayList = new ArrayList<>();
 
     public ServicesFragment() {
         // Required empty public constructor
@@ -35,7 +29,7 @@ public class ServicesFragment extends Fragment {
         mHairTrim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mHairTrim");
                 serviceDetailFragment.setArguments(args);
@@ -50,7 +44,7 @@ public class ServicesFragment extends Fragment {
         mHairColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mHairColor");
                 serviceDetailFragment.setArguments(args);
@@ -65,7 +59,7 @@ public class ServicesFragment extends Fragment {
         mSkinCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mSkinCare");
                 serviceDetailFragment.setArguments(args);
@@ -80,7 +74,7 @@ public class ServicesFragment extends Fragment {
         mWaxing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mWaxing");
                 serviceDetailFragment.setArguments(args);
@@ -95,7 +89,7 @@ public class ServicesFragment extends Fragment {
         mHairTexture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mHairTexture");
                 serviceDetailFragment.setArguments(args);
@@ -110,7 +104,7 @@ public class ServicesFragment extends Fragment {
         mBeardGrooming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "mBeardGrooming");
                 serviceDetailFragment.setArguments(args);
@@ -125,7 +119,7 @@ public class ServicesFragment extends Fragment {
         fHairTrim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fHairTrim");
                 serviceDetailFragment.setArguments(args);
@@ -140,7 +134,7 @@ public class ServicesFragment extends Fragment {
         fHairColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fHairColor");
                 serviceDetailFragment.setArguments(args);
@@ -155,7 +149,7 @@ public class ServicesFragment extends Fragment {
         fSkinCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fSkinCare");
                 serviceDetailFragment.setArguments(args);
@@ -170,7 +164,7 @@ public class ServicesFragment extends Fragment {
         fWaxing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fWaxing");
                 serviceDetailFragment.setArguments(args);
@@ -185,7 +179,7 @@ public class ServicesFragment extends Fragment {
         fHairTexture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fHairTexture");
                 serviceDetailFragment.setArguments(args);
@@ -200,7 +194,7 @@ public class ServicesFragment extends Fragment {
         fNailCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ServiceDetailFragment  serviceDetailFragment = new ServiceDetailFragment();
+                ServiceDetailFragment serviceDetailFragment = new ServiceDetailFragment();
                 Bundle args = new Bundle();
                 args.putString("sType", "fNailCare");
                 serviceDetailFragment.setArguments(args);

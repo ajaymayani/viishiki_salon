@@ -1,7 +1,5 @@
 package com.vishiki.salon.fragements;
 
-import static com.vishiki.salon.fragements.ServicesFragment.servicesArrayList;
-
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +9,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import com.vishiki.salon.R;
 import com.vishiki.salon.adapters.ServiceAdapter;
-import com.vishiki.salon.models.Services;
 
 import java.util.Calendar;
 
@@ -48,7 +44,7 @@ public class ServiceDetailFragment extends Fragment {
         tvHeaderTitle = view.findViewById(R.id.tvHeaderTitle);
         rvServiceDetails = view.findViewById(R.id.rvServiceDetails);
         btnConfirm = view.findViewById(R.id.btnConfirm);
-        servicesArrayList.clear();
+        //servicesArrayList.clear();
         String sType = getArguments().getString("sType");
 
         if (sType.equals("mHairTrim")) {

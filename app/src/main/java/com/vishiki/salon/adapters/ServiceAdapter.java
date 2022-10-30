@@ -1,6 +1,7 @@
 package com.vishiki.salon.adapters;
 
-import static com.vishiki.salon.fragements.ServicesFragment.servicesArrayList;
+
+import static com.vishiki.salon.fragements.HomeFragment.servicesArrayList;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

@@ -28,7 +28,7 @@ public class ServiceDetailFragment extends Fragment {
     ImageView imageView;
     String[] service;
     int[] servicePrice;
-    Button btnConfirm;
+    Button btnConfirm,btnBack;
     TextView tvHeaderTitle;
 
     public ServiceDetailFragment() {
@@ -44,6 +44,7 @@ public class ServiceDetailFragment extends Fragment {
         tvHeaderTitle = view.findViewById(R.id.tvHeaderTitle);
         rvServiceDetails = view.findViewById(R.id.rvServiceDetails);
         btnConfirm = view.findViewById(R.id.btnConfirm);
+        btnBack = view.findViewById(R.id.btnBack);
         //servicesArrayList.clear();
         String sType = getArguments().getString("sType");
 
@@ -120,6 +121,17 @@ public class ServiceDetailFragment extends Fragment {
         ServiceAdapter adapter = new ServiceAdapter(getActivity(), service, servicePrice);
         rvServiceDetails.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvServiceDetails.setAdapter(adapter);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity()
+                        .getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container,new ServicesFragment())
+                        .commit();
+            }
+        });
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override

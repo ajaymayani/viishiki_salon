@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -53,6 +54,8 @@ public class RegistrationActivity extends AppCompatActivity {
     FirebaseFirestore db;
     TextView tvSignIn;
     ImageView ivEye;
+    boolean exist = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
         ivProfilePicture = findViewById(R.id.ivProfilePicture);
         tvSignIn = findViewById(R.id.tvSignIn);
         ivEye = findViewById(R.id.ivEye);
+        db = FirebaseFirestore.getInstance();
 
         etDOB.addTextChangedListener(new TextWatcher() {
             @Override
@@ -161,7 +165,7 @@ public class RegistrationActivity extends AppCompatActivity {
 //                    etPassword.setError("Password must be 6-12 character");
                     etPassword.setBackground(getDrawable(R.drawable.border_red));
                     Toast.makeText(RegistrationActivity.this, "Password must be 6-12 character", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     etPassword.setBackground(getDrawable(R.drawable.border_black));
                 }
 
@@ -172,91 +176,95 @@ public class RegistrationActivity extends AppCompatActivity {
                         progressDialog.setTitle("Uploading...");
                         progressDialog.show();
 
-                        FirebaseStorage storage = FirebaseStorage.getInstance();
-                        StorageReference storageRef = storage.getReference();
-
-                        StorageReference ref = storageRef.child("users_profile_pic/" + username + ".jpg");
-
-                        ref.putFile(imageUri)
-                                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        db.collection("users")
+                                .whereEqualTo("username", username)
+                                .get()
+                                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                                     @Override
-                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (queryDocumentSnapshots.isEmpty()) {
+                                            FirebaseStorage storage = FirebaseStorage.getInstance();
+                                            StorageReference storageRef = storage.getReference();
 
-                                        ref.getDownloadUrl()
-                                                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                    @Override
-                                                    public void onSuccess(Uri uri) {
-                                                        User user = new User(name, phonenumber, dob, username, password, String.valueOf(uri));
+                                            StorageReference ref = storageRef.child("users_profile_pic/" + username + ".jpg");
 
-                                                        db = FirebaseFirestore.getInstance();
+                                            ref.putFile(imageUri)
+                                                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                                        db.collection("users")
-                                                                .add(user)
-                                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                                    @Override
-                                                                    public void onSuccess(DocumentReference documentReference) {
-                                                                        progressDialog.dismiss();
-                                                                        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                                                                        finish();
-                                                                    }
-                                                                }).addOnFailureListener(new OnFailureListener() {
-                                                                    @Override
-                                                                    public void onFailure(@NonNull Exception e) {
-                                                                        Toast.makeText(RegistrationActivity.this, "Failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                                    }
-                                                                });
+                                                            ref.getDownloadUrl()
+                                                                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                                        @Override
+                                                                        public void onSuccess(Uri uri) {
+                                                                            User user = new User(name, phonenumber, dob, username, password, String.valueOf(uri));
 
 
-                                                        /*FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                                                        DatabaseReference databaseReference = firebaseDatabase.getReference("users");
-                                                        databaseReference.push().setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                                startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
-                                                                finish();
-                                                            }
-                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Toast.makeText(RegistrationActivity.this, "Something went to wrong", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });*/
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        progressDialog.dismiss();
-                                                        Toast.makeText(RegistrationActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
+                                                                            db.collection("users")
+                                                                                    .add(user)
+                                                                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                                        @Override
+                                                                                        public void onSuccess(DocumentReference documentReference) {
+                                                                                            progressDialog.dismiss();
+                                                                                            startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
+                                                                                            finish();
+                                                                                        }
+                                                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                                                        @Override
+                                                                                        public void onFailure(@NonNull Exception e) {
+                                                                                            Toast.makeText(RegistrationActivity.this, "Failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                                        }
+                                                                                    });
+                                                                        }
+                                                                    })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            progressDialog.dismiss();
+                                                                            Toast.makeText(RegistrationActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    });
 
-                                    }
-                                })
-                                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                                        double progress
-                                                = (100.0
-                                                * snapshot.getBytesTransferred()
-                                                / snapshot.getTotalByteCount());
-                                        progressDialog.setMessage(
-                                                "Uploaded "
-                                                        + (int) progress + "%");
+                                                        }
+                                                    })
+                                                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                        @Override
+                                                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                                                            double progress
+                                                                    = (100.0
+                                                                    * snapshot.getBytesTransferred()
+                                                                    / snapshot.getTotalByteCount());
+                                                            progressDialog.setMessage(
+                                                                    "Uploaded "
+                                                                            + (int) progress + "%");
+                                                        }
+                                                    })
+                                                    .addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            progressDialog.dismiss();
+                                                            Log.e("log", "Error : " + e.getMessage());
+                                                            Toast
+                                                                    .makeText(RegistrationActivity.this,
+                                                                            "Failed " + e.getMessage(), Toast.LENGTH_LONG)
+                                                                    .show();
+
+                                                        }
+                                                    });
+                                        } else {
+                                            etUsername.setError("Username already exist");
+                                            Toast.makeText(RegistrationActivity.this, "Username already exist...", Toast.LENGTH_SHORT).show();
+                                            progressDialog.dismiss();
+                                        }
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        progressDialog.dismiss();
-                                        Log.e("log", "Error : " + e.getMessage());
-                                        Toast
-                                                .makeText(RegistrationActivity.this,
-                                                        "Failed " + e.getMessage(), Toast.LENGTH_LONG)
-                                                .show();
-
+                                        Toast.makeText(RegistrationActivity.this, "Failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+
                     } else {
                         Toast.makeText(RegistrationActivity.this, "Please select profile picture", Toast.LENGTH_SHORT).show();
                     }
@@ -271,6 +279,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean isUsernameExist(String username) {
+
+        return exist;
     }
 
     @Override

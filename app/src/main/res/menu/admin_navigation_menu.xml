@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mHome"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/home"/>
+
+    <item
+        android:icon="@drawable/resume"
+        android:id="@+id/mProfile"
+        android:title="@string/profile"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:id="@+id/mAppointment"
+        android:title="@string/appointment"/>
+
+    <item
+        android:icon="@drawable/multiple_users"
+        android:id="@+id/mUsers"
+        android:title="@string/users"/>
+
+    <item
+        android:icon="@drawable/logout_icon"
+        android:id="@+id/mLogout"
+        android:title="@string/logout"/>
+
+</menu>

@@ -42,7 +42,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         StringBuilder builder = new StringBuilder();
         StringBuilder builderPrice = new StringBuilder();
 
-
         for(int i=0;i<appointment.getStringHashMap().size();i++)
         {
             HashMap<String,Object> s = appointment.getStringHashMap().get(i);

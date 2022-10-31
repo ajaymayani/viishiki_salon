@@ -1,7 +1,7 @@
 package com.vishiki.salon;
 
-import static com.vishiki.salon.SplashActivity.sp;
 import static com.vishiki.salon.SplashActivity.editor;
+import static com.vishiki.salon.SplashActivity.sp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.vishiki.salon.admin.AdminDashboardActivity;
 import com.vishiki.salon.models.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     String userName, password;
     FirebaseFirestore db;
     ImageView ivEye;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,12 +93,12 @@ public class LoginActivity extends AppCompatActivity {
 //                    etPassword.setError("Password must be 6-12 character");
                     etPassword.setBackground(getDrawable(R.drawable.border_red));
                     Toast.makeText(LoginActivity.this, "Password must be 6-12 character", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     etPassword.setBackground(getDrawable(R.drawable.border_black));
                 }
 
                 if (!userName.isEmpty() && password.length() >= 6) {
-                    ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+                    progressDialog = new ProgressDialog(LoginActivity.this);
                     progressDialog.setMessage("Please wait...");
                     progressDialog.show();
 
@@ -113,29 +115,41 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, "Invalid Credential", Toast.LENGTH_SHORT).show();
                                     } else {
                                         for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                                            User user = new User();
-                                            user.setName(document.getString("name"));
-                                            user.setPhoneNumber(document.getString("phoneNumber"));
-                                            user.setDob(document.getString("dob"));
-                                            user.setUsername(document.getString("username"));
-                                            user.setPassword(document.getString("password"));
-                                            user.setImageUrl(document.getString("imageUrl"));
+                                            String username = document.getString("username");
+                                            String password = document.getString("password");
 
-                                            editor.putString("name", user.getName());
-                                            editor.putString("phoneNumber", user.getPhoneNumber());
-                                            editor.putString("dob", user.getDob());
-                                            editor.putString("username", user.getUsername());
-                                            editor.putString("password", user.getPassword());
-                                            editor.putString("imageUrl", user.getImageUrl());
-                                            editor.apply();
+                                            if (username.equals("admin") && password.equals("admin@123")) {
+
+                                                editor.putString("username", username);
+                                                editor.putString("password", password);
+                                                editor.apply();
+                                                goToAdminDashboard();
+                                            } else {
+                                                User user = new User();
+                                                user.setName(document.getString("name"));
+                                                user.setPhoneNumber(document.getString("phoneNumber"));
+                                                user.setDob(document.getString("dob"));
+                                                user.setUsername(username);
+                                                user.setPassword(password);
+                                                user.setImageUrl(document.getString("imageUrl"));
+
+                                                editor.putString("name", user.getName());
+                                                editor.putString("phoneNumber", user.getPhoneNumber());
+                                                editor.putString("dob", user.getDob());
+                                                editor.putString("username", user.getUsername());
+                                                editor.putString("password", user.getPassword());
+                                                editor.putString("imageUrl", user.getImageUrl());
+                                                editor.apply();
+                                                goToDashboard();
+                                            }
                                             progressDialog.dismiss();
-                                            goToDashboard();
                                         }
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(LoginActivity.this, "Failed:" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -148,4 +162,10 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(LoginActivity.this, DashbordActivity.class));
         finish();
     }
+    public void goToAdminDashboard() {
+        startActivity(new Intent(LoginActivity.this, AdminDashboardActivity.class));
+        finish();
+    }
+
+
 }

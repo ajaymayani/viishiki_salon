@@ -8,9 +8,10 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.vishiki.salon.admin.AdminDashboardActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -32,12 +33,15 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.splash_animation);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.splash_animation);
         ivLogo.startAnimation(animation);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!sp.getString("name", "default").equals("default")) {
+                if (sp.getString("username", "").equals("admin")) {
+                    startActivity(new Intent(SplashActivity.this, AdminDashboardActivity.class));
+                    finish();
+                } else if (!sp.getString("username", "default").equals("default")) {
                     startActivity(new Intent(SplashActivity.this, DashbordActivity.class));
                     finish();
                 } else {

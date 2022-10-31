@@ -1,4 +1,4 @@
-package com.vishiki.salon;
+package com.vishiki.salon.admin;
 
 import static com.vishiki.salon.SplashActivity.editor;
 import static com.vishiki.salon.SplashActivity.sp;
@@ -21,12 +21,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
-import com.vishiki.salon.fragements.HistoryFragment;
-import com.vishiki.salon.fragements.HomeFragment;
-import com.vishiki.salon.fragements.ProfileFragment;
+import com.vishiki.salon.LoginActivity;
+import com.vishiki.salon.R;
 
-public class DashbordActivity extends AppCompatActivity {
-
+public class AdminDashboardActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     Toolbar toolbar;
@@ -36,26 +34,24 @@ public class DashbordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashbord);
+        setContentView(R.layout.activity_admin_dashboard);
 
         drawerLayout = findViewById(R.id.drawer);
         toolbar = findViewById(R.id.toolbar);
-
-//        setSupportActionBar(toolbar);
         navigationView = findViewById(R.id.navigationView);
-
+        setSupportActionBar(toolbar);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.adminContainer, new AdminHomeFragment()).commit();
 
         View headerLayout = navigationView.getHeaderView(0);
         ImageView imageView = headerLayout.findViewById(R.id.ivProfilePicture);
         TextView tvName = headerLayout.findViewById(R.id.tvName);
 
-        Picasso.get().load(sp.getString("imageUrl", "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png")).placeholder(R.drawable.logo).into(imageView);
-        tvName.setText(sp.getString("name", "Default"));
+        Picasso.get().load(R.drawable.logo).into(imageView);
+        tvName.setText(sp.getString("username", "Default"));
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -63,24 +59,25 @@ public class DashbordActivity extends AppCompatActivity {
                 Fragment temp = null;
                 switch (item.getItemId()) {
                     case R.id.mHome:
-                        temp = new HomeFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, temp).addToBackStack(null).commit();
+                        temp = new AdminHomeFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.adminContainer, temp).addToBackStack(null).commit();
                         break;
                     case R.id.mProfile:
-                        temp = new ProfileFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, temp).addToBackStack(null).commit();
+                        temp = new AdminHomeFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.adminContainer, temp).addToBackStack(null).commit();
                         break;
-                    case R.id.mHistory:
-                        temp = new HistoryFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, temp).addToBackStack(null).commit();
+                    case R.id.mAppointment:
+                        temp = new AppointmentFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.adminContainer, temp).addToBackStack(null).commit();
                         break;
-                    case R.id.mFAQs:
-                        Toast.makeText(DashbordActivity.this, "FAQ", Toast.LENGTH_SHORT).show();
+                    case R.id.mUsers:
+                        temp = new UsersFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.adminContainer, temp).addToBackStack(null).commit();
                         break;
                     case R.id.mLogout:
                         editor.clear();
                         editor.apply();
-                        startActivity(new Intent(DashbordActivity.this, LoginActivity.class));
+                        startActivity(new Intent(AdminDashboardActivity.this, LoginActivity.class));
                         finish();
                         break;
                 }
@@ -89,5 +86,4 @@ public class DashbordActivity extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -50,11 +50,17 @@ public class PaymentFragment extends Fragment {
         tvTotal = view.findViewById(R.id.tvTotal);
         btnAppointment = view.findViewById(R.id.btnAppointment);
         appointment = new Appointment();
+
         String selectedDate = getArguments().getString("date");
         String username = sp.getString("username", "default");
+        String name = sp.getString("name","default");
+        String phoneNumber = sp.getString("phoneNumber","default");
+
         StringBuilder builder = new StringBuilder();
         StringBuilder builderPrice = new StringBuilder();
+
         int total = 0;
+
         tvUsername.setText("Username : " + username);
         tvDate.setText("Date : " + selectedDate);
         appointment.setUsername(username);
@@ -74,6 +80,9 @@ public class PaymentFragment extends Fragment {
         tvServicesPrice.setText(builderPrice.toString());
         tvTotal.setText("Total : ₹" + total);
         appointment.setTotal(String.valueOf(total));
+        appointment.setCompleted(false);
+        appointment.setName(name);
+        appointment.setPhoneNumber(phoneNumber);
 
         btnAppointment.setOnClickListener(new View.OnClickListener() {
             @Override

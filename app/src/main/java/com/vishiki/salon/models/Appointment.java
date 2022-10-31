@@ -10,15 +10,45 @@ public class Appointment {
     private ArrayList<HashMap<String,Object>> stringHashMap;
     private String total;
     private String appointmentDate;
+    private boolean isCompleted;
+    private String name;
+    private String phoneNumber;
 
     public Appointment() {
     }
 
-    public Appointment(String username, ArrayList<Services> servicesList, String total, String appointmentDate) {
+    public Appointment(String username, ArrayList<Services> servicesList, String total, String appointmentDate,boolean isCompleted,String name,String phoneNumber) {
         this.username = username;
         this.servicesList = servicesList;
         this.total = total;
         this.appointmentDate = appointmentDate;
+        this.isCompleted = isCompleted;
+        this.name = name;
+        this.phoneNumber= phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 
     public String getUsername() {

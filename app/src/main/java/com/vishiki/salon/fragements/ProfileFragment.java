@@ -1,7 +1,6 @@
 package com.vishiki.salon.fragements;
 
 import static com.vishiki.salon.SplashActivity.sp;
-import static com.vishiki.salon.fragements.ServicesFragment.servicesArrayList;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,21 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.vishiki.salon.R;
-import com.vishiki.salon.models.Services;
 
 
 public class ProfileFragment extends Fragment {
 
     ImageView ivProfilePicture;
-    TextView tvUsername, tvName, tvDOB, tvUsername1, tvPhoneNumber,tvPassword;
-    String imageUrl, name, dob, username, phoneNumber,password;
+    TextView tvUsername, tvName, tvDOB, tvUsername1, tvPhoneNumber, tvPassword;
+    String imageUrl, name, dob, username, phoneNumber, password;
     Button btnEdit;
 
     public ProfileFragment() {
@@ -68,7 +64,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container,new EditFragment())
+                        .replace(R.id.container, new EditFragment())
                         .addToBackStack(null)
                         .commit();
             }

@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
+import com.vishiki.salon.fragements.FAQFragment;
 import com.vishiki.salon.fragements.HistoryFragment;
 import com.vishiki.salon.fragements.HomeFragment;
 import com.vishiki.salon.fragements.ProfileFragment;
@@ -75,7 +76,8 @@ public class DashbordActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, temp).addToBackStack(null).commit();
                         break;
                     case R.id.mFAQs:
-                        Toast.makeText(DashbordActivity.this, "FAQ", Toast.LENGTH_SHORT).show();
+                        temp = new FAQFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, temp).addToBackStack(null).commit();
                         break;
                     case R.id.mLogout:
                         editor.clear();

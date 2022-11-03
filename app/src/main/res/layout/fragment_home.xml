@@ -136,7 +136,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/llContactUs"
+                android:id="@+id/llAboutUs"
                 android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_marginHorizontal="40dp"

@@ -84,7 +84,7 @@ public class ServiceDetailFragment extends Fragment {
 
         } else if (sType.equals("fHairTrim")) {
             tvHeaderTitle.setText(getString(R.string.hair_trim));
-            Picasso.get().load("https://previews.123rf.com/images/innareznik/innareznik2009/innareznik200900176/156060875-little-girl-having-her-hair-cut-little-girl-sitting-in-beauty-hair-salon-style-for-children-.jpg").placeholder(R.drawable.logo).into(imageView);
+                Picasso.get().load("https://previews.123rf.com/images/innareznik/innareznik2009/innareznik200900176/156060875-little-girl-having-her-hair-cut-little-girl-sitting-in-beauty-hair-salon-style-for-children-.jpg").placeholder(R.drawable.logo).into(imageView);
             service = getResources().getStringArray(R.array.hairTrim);
             servicePrice = getResources().getIntArray(R.array.hairTrimPrice);
 

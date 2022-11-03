@@ -43,7 +43,35 @@
     <string name="sales">Sales</string>
     <string name="total">Total</string>
     <string name="back">Back</string>
+    <string name="about">Viishikii salon app is your one stop solution to an array of needs, which range from carried out professionally and conveniently. We aim to build the most complling home service app of the 21st century by offering the most convenient and premium service.
+We simplify your everyday living by presenting a variety of services.
+Viishikii believes to bridging the gap between customers and service providers by maintaining a very transparent way of communication and operation.</string>
 
+    <string name="time_slot"><b>Time slot : </b> morning 10 to night 8</string>
+    <string name="address"><address> <b>Address : </b>23 - Evenue building ,   Main road , Vadodara, Gujarat, India - 390000</address></string>
+
+    <string name="firstAns">You can book services from android applications We will be very happy to pamper you.\n
+Just download the viishikii salon app\n
+1. When you open the app you see categories of the services available\n
+2. Click on the preferred categories\n
+3. You would presented with the sub category now.\n
+4. You can choose desired service and click on confirm.\n
+5. After that select date and book your services and confirm appointment.
+    </string>
+
+    <string name="secondAns">No , You don\'t need to worry about anything. Just sit back and book your appointment with your convenience.</string>
+    <string name="thirdAns">Yes , Depending upon the availability of the slot and the expert we will reschedule your booking as per your preferred date.</string>
+    <string name="fourthAns">If you forgot your password:\n
+        Mail on <a href="mailto:vishikii@gmail.com"><b>vishikii@gmail.com</b></a>\n
+    If you want to reset the password:\n
+1. Click on forgot password\n
+2. Enter email or phone number\n
+3. Confirm password\n
+4. Reset the password
+    </string>
+
+    <string name="fifthAns">Salon accept cash after services and UPI.</string>
+    <string name="sixthAns">Our app have a history information after customer registers in app.</string>
 
     <string-array name="hairTrim">
         <item>Regular Cut</item>

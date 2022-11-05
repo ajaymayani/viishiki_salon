@@ -136,7 +136,7 @@ Just download the viishikii salon app\n
     <string-array name="mWaxing">
         <item>Back Waxing</item>
         <item>Chest Waxing</item>
-        <item>Should and Stomach Waxing</item>
+        <item>Leg and Stomach Waxing</item>
     </string-array>
 
     <integer-array name="mWaxingPrice">

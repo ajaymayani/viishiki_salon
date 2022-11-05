@@ -28,7 +28,7 @@
             android:layout_toEndOf="@id/imageView"
             android:fontFamily="@font/poppins_regular"
             android:text="Name"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14sdp" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_toEndOf="@id/imageView"
             android:fontFamily="@font/poppins_regular"
             android:text="Phone Number"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14sdp" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_toEndOf="@id/imageView"
             android:fontFamily="@font/poppins_regular"
             android:text="DOB"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14sdp" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:layout_toEndOf="@id/imageView"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/username"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
 

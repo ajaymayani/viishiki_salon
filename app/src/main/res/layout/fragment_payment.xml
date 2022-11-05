@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragements.PaymentFragment">
 
     <LinearLayout
@@ -62,22 +62,22 @@
 
                 <TextView
                     android:id="@+id/tvUsername"
+                    style="@style/cardView_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Username"
-                    android:textColor="#000"
                     android:textSize="18sp" />
 
                 <TextView
+                    style="@style/cardView_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Service"
-                    android:textColor="#000"
                     android:textSize="18sp" />
 
                 <LinearLayout
@@ -88,43 +88,43 @@
 
                     <TextView
                         android:id="@+id/tvServices"
+                        style="@style/cardView_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="0.2"
                         android:fontFamily="@font/poppins_regular"
-                        android:textColor="#000"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/tvServicesPrice"
+                        style="@style/cardView_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="0.8"
                         android:fontFamily="@font/poppins_regular"
-                        android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvTotal"
+                    style="@style/cardView_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_regular"
                     android:text="Total Amount"
-                    android:textColor="#000"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/tvDate"
+                    style="@style/cardView_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/poppins_regular"
                     android:text="date"
-                    android:textColor="#000"
                     android:textSize="18sp" />
 
                 <Button
@@ -146,10 +146,10 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieView"
-        app:lottie_speed="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:lottie_autoPlay="false"
         android:visibility="gone"
-        app:lottie_fileName="take_appointment.json" />
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="take_appointment.json"
+        app:lottie_speed="1" />
 </RelativeLayout>

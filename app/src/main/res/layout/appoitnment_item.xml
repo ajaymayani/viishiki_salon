@@ -20,7 +20,7 @@
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/poppins_regular"
             android:text="Username"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/poppins_regular"
             android:text="date"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14ssp" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:layout_below="@id/tvUsername"
             android:fontFamily="@font/poppins_regular"
             android:text="123456789"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14ssp"
             app:drawableStartCompat="@drawable/ic_baseline_phone_24" />
 
@@ -52,7 +52,7 @@
             android:layout_below="@id/tvPhoneNumber"
             android:fontFamily="@font/poppins_regular"
             android:text="Service"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14ssp" />
 
         <LinearLayout
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0.2"
-                android:textColor="#000"
+                style="@style/cardView_text"
                 android:textSize="@dimen/_12ssp" />
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.8"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="#000"
+                style="@style/cardView_text"
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>
 
@@ -93,7 +93,7 @@
             android:layout_below="@id/ll"
             android:fontFamily="@font/poppins_regular"
             android:text="Total"
-            android:textColor="@color/black"
+            style="@style/cardView_text"
             android:textSize="@dimen/_14ssp" />
 
         <LinearLayout

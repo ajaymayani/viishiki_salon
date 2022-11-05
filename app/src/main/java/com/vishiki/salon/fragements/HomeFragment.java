@@ -46,7 +46,7 @@ public class HomeFragment extends Fragment {
         ivProfilePicture = view.findViewById(R.id.ivProfilePicture);
 
         Picasso.get().load(sp.getString("imageUrl", "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png")).placeholder(R.drawable.logo).into(ivProfilePicture);
-        tvUsername.setText(sp.getString("username", "default"));
+        tvUsername.setText("Welcome , "+sp.getString("username", "default"));
 
         llLogout.setOnClickListener(new View.OnClickListener() {
             @Override

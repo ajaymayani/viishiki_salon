@@ -5,16 +5,20 @@ import static com.vishiki.salon.fragements.HomeFragment.servicesArrayList;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,7 +34,9 @@ public class PaymentFragment extends Fragment {
     TextView tvUsername, tvServices, tvDate, tvTotal, tvServicesPrice;
     Button btnAppointment;
     Appointment appointment;
+    LinearLayout paymentLayout;
     FirebaseFirestore db;
+    LottieAnimationView lottieView;
     ArrayList<Services> servicesList = new ArrayList<>();
 
     public PaymentFragment() {
@@ -49,12 +55,17 @@ public class PaymentFragment extends Fragment {
         tvServicesPrice = view.findViewById(R.id.tvServicesPrice);
         tvTotal = view.findViewById(R.id.tvTotal);
         btnAppointment = view.findViewById(R.id.btnAppointment);
+        lottieView = view.findViewById(R.id.lottieView);
+        paymentLayout = view.findViewById(R.id.paymentLayout);
         appointment = new Appointment();
 
         String selectedDate = getArguments().getString("date");
         String username = sp.getString("username", "default");
         String name = sp.getString("name","default");
         String phoneNumber = sp.getString("phoneNumber","default");
+
+        paymentLayout.setVisibility(View.VISIBLE);
+        lottieView.setVisibility(View.GONE);
 
         StringBuilder builder = new StringBuilder();
         StringBuilder builderPrice = new StringBuilder();
@@ -88,7 +99,6 @@ public class PaymentFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
                 ProgressDialog progressDialog
                         = new ProgressDialog(getActivity());
                 progressDialog.setTitle("Uploading...");
@@ -106,7 +116,15 @@ public class PaymentFragment extends Fragment {
 //                                Toast.makeText(getActivity(), "Added", Toast.LENGTH_SHORT).show();
                                 servicesArrayList.clear();
 
-                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                                paymentLayout.setVisibility(View.GONE);
+                                lottieView.setVisibility(View.VISIBLE);
+                                lottieView.playAnimation();
+                                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                                    }
+                                },4000);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

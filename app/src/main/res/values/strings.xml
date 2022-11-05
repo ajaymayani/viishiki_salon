@@ -73,18 +73,32 @@ Just download the viishikii salon app\n
     <string name="fifthAns">Salon accept cash after services and UPI.</string>
     <string name="sixthAns">Our app have a history information after customer registers in app.</string>
 
-    <string-array name="hairTrim">
+    <string-array name="mHairTrim">
         <item>Regular Cut</item>
         <item>Bowl Cut</item>
         <item>Military Cut</item>
         <item>Low Fade</item>
     </string-array>
 
-    <integer-array name="hairTrimPrice">
+    <integer-array name="mHairTrimPrice">
         <item>200</item>
         <item>250</item>
         <item>500</item>
         <item>350</item>
+    </integer-array>
+
+    <string-array name="fHairTrim">
+        <item>U/V cut</item>
+        <item>Curtain bangs</item>
+        <item>Long layer</item>
+        <item>Butterfly haircut</item>
+    </string-array>
+
+    <integer-array name="fHairTrimPrice">
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>500</item>
     </integer-array>
 
     <string-array name="hairColor">
@@ -105,34 +119,47 @@ Just download the viishikii salon app\n
 
     <string-array name="mSkinCare">
         <item>Facial</item>
-        <item>Scrub</item>
-        <item>Detain</item>
-        <item>Skin Polish</item>
-        <item>Charcoal Mask</item>
+        <item>Silver</item>
+        <item>Peel Treatment</item>
+        <item>Acne Free</item>
+        <item>Cleanup</item>
     </string-array>
 
     <integer-array name="mSkinCarePrice">
-        <item>500</item>
-        <item>350</item>
-        <item>700</item>
+        <item>300</item>
+        <item>600</item>
+        <item>550</item>
         <item>800</item>
-        <item>450</item>
+        <item>200</item>
     </integer-array>
 
-    <string-array name="waxing">
-        <item>Facial</item>
-        <item>Scrub</item>
-        <item>Detain</item>
-        <item>Skin Polish</item>
-        <item>Charcoal Mask</item>
+    <string-array name="mWaxing">
+        <item>Back Waxing</item>
+        <item>Chest Waxing</item>
+        <item>Should and Stomach Waxing</item>
     </string-array>
 
-    <integer-array name="waxingPrice">
-        <item>500</item>
-        <item>350</item>
-        <item>700</item>
-        <item>800</item>
+    <integer-array name="mWaxingPrice">
         <item>450</item>
+        <item>350</item>
+        <item>650</item>
+    </integer-array>
+
+
+    <string-array name="fWaxing">
+        <item>Wax with honey choco wax</item>
+        <item>Full arms with honey choco wax</item>
+        <item>Full back with honey choco wax</item>
+        <item>Full legs with honey choco wax</item>
+        <item>Full underarms with honey choco wax</item>
+    </string-array>
+
+    <integer-array name="fWaxingPrice">
+        <item>240</item>
+        <item>220</item>
+        <item>250</item>
+        <item>170</item>
+        <item>200</item>
     </integer-array>
 
 

@@ -239,7 +239,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@drawable/white_rounded_bg"
+            android:background="@drawable/purple_background_black_border"
             android:fontFamily="@font/poppins_regular"
             android:text="Register"
             android:textAllCaps="false"

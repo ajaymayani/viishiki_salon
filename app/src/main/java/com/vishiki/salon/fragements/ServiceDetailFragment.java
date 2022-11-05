@@ -1,6 +1,10 @@
 package com.vishiki.salon.fragements;
 
+import static com.vishiki.salon.fragements.HomeFragment.servicesArrayList;
+
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +32,7 @@ public class ServiceDetailFragment extends Fragment {
     ImageView imageView;
     String[] service;
     int[] servicePrice;
-    Button btnConfirm,btnBack;
+    Button btnConfirm, btnBack;
     TextView tvHeaderTitle;
 
     public ServiceDetailFragment() {
@@ -51,8 +55,8 @@ public class ServiceDetailFragment extends Fragment {
         if (sType.equals("mHairTrim")) {
             tvHeaderTitle.setText(getString(R.string.hair_trim));
             imageView.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.haircytmale));
-            service = getResources().getStringArray(R.array.hairTrim);
-            servicePrice = getResources().getIntArray(R.array.hairTrimPrice);
+            service = getResources().getStringArray(R.array.mHairTrim);
+            servicePrice = getResources().getIntArray(R.array.mHairTrimPrice);
         } else if (sType.equals("mHairColor")) {
             tvHeaderTitle.setText(getString(R.string.hair_color));
             imageView.setImageDrawable(getActivity().getResources().getDrawable(R.drawable.haircolor));
@@ -67,8 +71,8 @@ public class ServiceDetailFragment extends Fragment {
         } else if (sType.equals("mWaxing")) {
             tvHeaderTitle.setText(getString(R.string.waxing));
             Picasso.get().load("https://img.freepik.com/premium-photo/young-man-receiving-waxing-chest-by-young-female-cosmetologist-beauty-salon-portrait-young-female-cosmetologist-during-waxing-male-chest_141172-4422.jpg").placeholder(R.drawable.logo).into(imageView);
-            service = getResources().getStringArray(R.array.waxing);
-            servicePrice = getResources().getIntArray(R.array.waxingPrice);
+            service = getResources().getStringArray(R.array.mWaxing);
+            servicePrice = getResources().getIntArray(R.array.mWaxingPrice);
 
         } else if (sType.equals("mHairTexture")) {
             tvHeaderTitle.setText(getString(R.string.hair_texture));
@@ -84,9 +88,9 @@ public class ServiceDetailFragment extends Fragment {
 
         } else if (sType.equals("fHairTrim")) {
             tvHeaderTitle.setText(getString(R.string.hair_trim));
-                Picasso.get().load("https://previews.123rf.com/images/innareznik/innareznik2009/innareznik200900176/156060875-little-girl-having-her-hair-cut-little-girl-sitting-in-beauty-hair-salon-style-for-children-.jpg").placeholder(R.drawable.logo).into(imageView);
-            service = getResources().getStringArray(R.array.hairTrim);
-            servicePrice = getResources().getIntArray(R.array.hairTrimPrice);
+            Picasso.get().load("https://previews.123rf.com/images/innareznik/innareznik2009/innareznik200900176/156060875-little-girl-having-her-hair-cut-little-girl-sitting-in-beauty-hair-salon-style-for-children-.jpg").placeholder(R.drawable.logo).into(imageView);
+            service = getResources().getStringArray(R.array.fHairTrim);
+            servicePrice = getResources().getIntArray(R.array.fHairTrimPrice);
 
         } else if (sType.equals("fHairColor")) {
             tvHeaderTitle.setText(getString(R.string.hair_color));
@@ -103,8 +107,8 @@ public class ServiceDetailFragment extends Fragment {
         } else if (sType.equals("fWaxing")) {
             tvHeaderTitle.setText(getString(R.string.waxing));
             Picasso.get().load("https://img.freepik.com/premium-photo/therapist-waxing-womans-leg-spa-center_13339-278416.jpg?w=2000").placeholder(R.drawable.logo).into(imageView);
-            service = getResources().getStringArray(R.array.waxing);
-            servicePrice = getResources().getIntArray(R.array.waxingPrice);
+            service = getResources().getStringArray(R.array.fWaxing);
+            servicePrice = getResources().getIntArray(R.array.fWaxingPrice);
 
         } else if (sType.equals("fHairTexture")) {
             tvHeaderTitle.setText(getString(R.string.hair_texture));
@@ -128,7 +132,7 @@ public class ServiceDetailFragment extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.container,new ServicesFragment())
+                        .replace(R.id.container, new ServicesFragment())
                         .commit();
             }
         });
@@ -136,30 +140,44 @@ public class ServiceDetailFragment extends Fragment {
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar myCalendar = Calendar.getInstance();
-                DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        myCalendar.set(Calendar.YEAR, year);
-                        myCalendar.set(Calendar.MONTH, month);
-                        myCalendar.set(Calendar.DAY_OF_MONTH, day);
+
+                if (servicesArrayList.size() != 0) {
+                    final Calendar myCalendar = Calendar.getInstance();
+                    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int day) {
+                            myCalendar.set(Calendar.YEAR, year);
+                            myCalendar.set(Calendar.MONTH, month);
+                            myCalendar.set(Calendar.DAY_OF_MONTH, day);
 //                        Toast.makeText(getActivity(), ""+day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
-                        String selectedDate = day + "/" + (month + 1) + "/" + year;
+                            String selectedDate = day + "/" + (month + 1) + "/" + year;
 
-                        PaymentFragment paymentFragment = new PaymentFragment();
-                        Bundle args = new Bundle();
-                        args.putString("date", selectedDate);
-                        paymentFragment.setArguments(args);
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.container, paymentFragment)
-                                .commit();
-                    }
-                };
-                new DatePickerDialog(getActivity(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
+                            PaymentFragment paymentFragment = new PaymentFragment();
+                            Bundle args = new Bundle();
+                            args.putString("date", selectedDate);
+                            paymentFragment.setArguments(args);
+                            getActivity().getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.container, paymentFragment)
+                                    .commit();
+                        }
+                    };
+                    new DatePickerDialog(getActivity(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Alert");
+                    builder.setMessage("Please select anyone service");
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.show();
+                }
             }
         });
+
 
         return view;
     }

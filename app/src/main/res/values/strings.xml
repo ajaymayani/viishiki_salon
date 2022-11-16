@@ -72,6 +72,7 @@ Just download the viishikii salon app\n
 
     <string name="fifthAns">Salon accept cash after services and UPI.</string>
     <string name="sixthAns">Our app have a history information after customer registers in app.</string>
+    <string name="date_card_formate">dd/MM/yyyy</string>
 
     <string-array name="mHairTrim">
         <item>Regular Cut</item>

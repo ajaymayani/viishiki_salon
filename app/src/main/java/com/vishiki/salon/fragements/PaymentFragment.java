@@ -5,8 +5,6 @@ import static com.vishiki.salon.fragements.HomeFragment.servicesArrayList;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +59,8 @@ public class PaymentFragment extends Fragment {
 
         String selectedDate = getArguments().getString("date");
         String username = sp.getString("username", "default");
-        String name = sp.getString("name","default");
-        String phoneNumber = sp.getString("phoneNumber","default");
+        String name = sp.getString("name", "default");
+        String phoneNumber = sp.getString("phoneNumber", "default");
 
         paymentLayout.setVisibility(View.VISIBLE);
         lottieView.setVisibility(View.GONE);
@@ -116,15 +114,13 @@ public class PaymentFragment extends Fragment {
 //                                Toast.makeText(getActivity(), "Added", Toast.LENGTH_SHORT).show();
                                 servicesArrayList.clear();
 
-                                paymentLayout.setVisibility(View.GONE);
-                                lottieView.setVisibility(View.VISIBLE);
-                                lottieView.playAnimation();
-                                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-                                    }
-                                },4000);
+//                                paymentLayout.setVisibility(View.GONE);
+//                                lottieView.setVisibility(View.VISIBLE);
+//                                lottieView.playAnimation();
+                                Toast.makeText(getActivity(), "Your Appointment has been successfully booked...", Toast.LENGTH_SHORT).show();
+
+                                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override

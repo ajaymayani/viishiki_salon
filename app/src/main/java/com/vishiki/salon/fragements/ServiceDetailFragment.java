@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +23,9 @@ import com.squareup.picasso.Picasso;
 import com.vishiki.salon.R;
 import com.vishiki.salon.adapters.ServiceAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class ServiceDetailFragment extends Fragment {
@@ -142,16 +145,26 @@ public class ServiceDetailFragment extends Fragment {
             public void onClick(View view) {
 
                 if (servicesArrayList.size() != 0) {
-                    final Calendar myCalendar = Calendar.getInstance();
-                    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int day) {
-                            myCalendar.set(Calendar.YEAR, year);
-                            myCalendar.set(Calendar.MONTH, month);
-                            myCalendar.set(Calendar.DAY_OF_MONTH, day);
-//                        Toast.makeText(getActivity(), ""+day+"/"+(month+1)+"/"+year, Toast.LENGTH_SHORT).show();
-                            String selectedDate = day + "/" + (month + 1) + "/" + year;
+                    // To show current date in the datepicker
+                    final Calendar mcurrentDate = Calendar.getInstance();
+                    int mYear = mcurrentDate.get(Calendar.YEAR);
+                    int mMonth = mcurrentDate.get(Calendar.MONTH);
+                    int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
 
+                    DatePickerDialog mDatePicker = new DatePickerDialog(
+                            getActivity(), new DatePickerDialog.OnDateSetListener() {
+                        public void onDateSet(DatePicker datepicker,
+                                              int selectedyear, int selectedmonth,
+                                              int selectedday) {
+
+                            mcurrentDate.set(Calendar.YEAR, selectedyear);
+                            mcurrentDate.set(Calendar.MONTH, selectedmonth);
+                            mcurrentDate.set(Calendar.DAY_OF_MONTH,
+                                    selectedday);
+                            SimpleDateFormat sdf = new SimpleDateFormat(getResources().getString(
+                                    R.string.date_card_formate), Locale.US);
+
+                            String selectedDate = sdf.format(mcurrentDate.getTime());
                             PaymentFragment paymentFragment = new PaymentFragment();
                             Bundle args = new Bundle();
                             args.putString("date", selectedDate);
@@ -161,8 +174,9 @@ public class ServiceDetailFragment extends Fragment {
                                     .replace(R.id.container, paymentFragment)
                                     .commit();
                         }
-                    };
-                    new DatePickerDialog(getActivity(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                    }, mYear, mMonth, mDay);
+                    mDatePicker.getDatePicker().setMinDate(System.currentTimeMillis());
+                    mDatePicker.show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("Alert");

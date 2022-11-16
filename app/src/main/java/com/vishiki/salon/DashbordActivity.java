@@ -3,6 +3,7 @@ package com.vishiki.salon;
 import static com.vishiki.salon.SplashActivity.editor;
 import static com.vishiki.salon.SplashActivity.sp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -59,6 +60,7 @@ public class DashbordActivity extends AppCompatActivity {
         tvName.setText(sp.getString("name", "Default"));
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment temp = null;

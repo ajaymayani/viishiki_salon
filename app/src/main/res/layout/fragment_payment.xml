@@ -1,155 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:layout_gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".fragements.PaymentFragment">
 
-    <LinearLayout
-        android:id="@+id/headerLayout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/primary_color"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvHeaderTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Payment"
-            android:textColor="@color/black"
-            android:textSize="21sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/headerLayout"
-        android:background="#000"
-        android:orientation="horizontal" />
-
-    <LinearLayout
-        android:id="@+id/paymentLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ll"
-        android:layout_gravity="center"
-        android:visibility="visible">
-
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/headerLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:orientation="vertical">
+                android:layout_height="80dp"
+                android:background="@color/primary_color"
+                android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tvUsername"
-                    style="@style/cardView_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Username"
-                    android:textSize="18sp" />
-
-                <TextView
-                    style="@style/cardView_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Service"
-                    android:textSize="18sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvServices"
-                        style="@style/cardView_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.2"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/tvServicesPrice"
-                        style="@style/cardView_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.8"
-                        android:fontFamily="@font/poppins_regular"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvTotal"
-                    style="@style/cardView_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Total Amount"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    style="@style/cardView_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="date"
-                    android:textSize="18sp" />
-
-                <Button
-                    android:id="@+id/btnAppointment"
+                    android:id="@+id/tvHeaderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginVertical="10dp"
-                    android:background="@drawable/round_border"
-                    android:backgroundTint="@color/teal_700"
-                    android:padding="10dp"
-                    android:text="Confirm Appointment"
-                    android:textColor="@color/white" />
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Payment"
+                    android:textColor="@color/black"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/headerLayout"
+                android:background="#000"
+                android:orientation="horizontal" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:lottie_autoPlay="false"
-        app:lottie_fileName="take_appointment.json"
-        app:lottie_speed="1" />
-</RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:visibility="visible">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvUsername"
+                            style="@style/cardView_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Username"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            style="@style/cardView_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Service"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvServices"
+                                style="@style/cardView_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.2"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tvServicesPrice"
+                                style="@style/cardView_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.8"
+                                android:fontFamily="@font/poppins_regular"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvTotal"
+                            style="@style/cardView_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Total Amount"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/tvDate"
+                            style="@style/cardView_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="date"
+                            android:textSize="18sp" />
+
+                        <Button
+                            android:id="@+id/btnAppointment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginVertical="10dp"
+                            android:background="@drawable/round_border"
+                            android:backgroundTint="@color/teal_700"
+                            android:padding="10dp"
+                            android:text="Confirm Appointment"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:lottie_autoPlay="false"
+                app:lottie_fileName="take_appointment.json"
+                app:lottie_speed="1" />
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
